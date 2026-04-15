@@ -7,6 +7,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from .config.env_variables import environment_variables
+from .routers.user_profile import user_profile_router
 
 
 @asynccontextmanager
@@ -38,3 +39,5 @@ api = FastAPI(
         "identifier": "MIT",
     },
 )
+
+api.include_router(user_profile_router)
