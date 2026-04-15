@@ -1,0 +1,55 @@
+{
+    "configurations": [
+    {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        // "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}",
+        "runtimeArgs": [
+            "https://localhost:8000/documentation/Swagger",
+            "https://localhost:8000",
+        ],
+        "presentation": {
+            "hidden": true,
+            "group": "Chrome FastAPI",
+            "order": 3
+        }
+    },
+    {
+        "name": "Python: FastAPI",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": [
+            "src.main:api",
+            "--reload",
+            "--ssl-keyfile=key.pem",
+            "--ssl-certfile=cert.pem",
+        ],
+        // "cwd": "${workspaceFolder}/user_management",
+        "jinja": true,
+        "justMyCode": true,
+        "presentation": {
+            "hidden": true,
+            "group": "Chrome FastAPI",
+            "order": 2
+        }
+    }
+    ],
+    "compounds": [
+        {
+            "name": "Launch Chrome FastAPI",
+            "configurations": [
+                "Python: FastAPI",
+                "Launch Chrome",
+            ],
+            "stopAll": true,
+            "presentation": {
+                "hidden": false,
+                "group": "Chrome FastAPI",
+                "order": 1
+            }
+        }
+    ]
+}
