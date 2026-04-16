@@ -5,7 +5,7 @@
 from sqlalchemy.orm import DeclarativeBase
 
 
-class UserManagement(DeclarativeBase):
+class UserManagementBase(DeclarativeBase):
     """
     
     """
