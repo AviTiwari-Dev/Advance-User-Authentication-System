@@ -1,5 +1,8 @@
 # Data storage models (SQLAlchemy models)
+from .data_storage.credential import Credential
 from .data_storage.email_address import EmailAddress
+from .data_storage.invalidated_refresh_token import InvalidatedRefreshToken
+from .data_storage.password_history import PasswordHistory
 from .data_storage.user_profile import UserProfile
 
 # Data validation models (Pydantic models)
