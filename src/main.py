@@ -7,7 +7,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from . import endpoints, models
+from .bases.user_management import UserManagementBase
 from .config.env_variables import environment_variables
+from .engines.user_management import user_management_engine
 from .routers.user_profile import user_profile_router
 
 
@@ -16,6 +18,8 @@ async def lifespan(app: FastAPI):
     """
     
     """
+    async with user_management_engine.begin() as connection:
+        await connection.run_sync(UserManagementBase.metadata.create_all)
     yield
 
 
