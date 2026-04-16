@@ -6,12 +6,13 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from . import endpoints, models
 from .config.env_variables import environment_variables
 from .routers.user_profile import user_profile_router
 
 
 @asynccontextmanager
-async def lifespan(app:FastAPI):
+async def lifespan(app: FastAPI):
     """
     
     """
@@ -32,7 +33,7 @@ api = FastAPI(
     openapi_url="/documentation/openapi.json",
     contact={
         "name": "Avi Tiwari",
-        "email": "avi_tiwari@hotmail.com",
+        "email": "avi_tiwari@example.com",
     },
     license_info={
         "name": "MIT Licence",
