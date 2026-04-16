@@ -50,3 +50,27 @@
                 hashed_password                             String
                 created_at                                  Datetime with timezone
                 updated_at                                  Datetime with timezone
+
+## Folder Structure
+
+    src
+        bases
+        config
+        dependencies
+        endpoints
+            __init__.py
+        engines
+        enums
+        events
+        exceptions
+        middlewares
+        models
+            data_storage
+            data_validation
+        operations
+        routers
+        session_factories
+        utilities
+        main.py
+    .env
+    .gitignore
