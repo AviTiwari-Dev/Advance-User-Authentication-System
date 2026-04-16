@@ -10,9 +10,9 @@ from sqlalchemy import Date, DateTime, Enum, ForeignKey, String, func
 from sqlalchemy.dialects.postgresql import UUID as pgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from bases.user_management import UserManagementBase
-from enums.gender import GenderEnum
-from enums.status import StatusEnum
+from src.bases.user_management import UserManagementBase
+from src.enums.gender import GenderEnum
+from src.enums.status import StatusEnum
 
 
 class UserProfile(UserManagementBase):

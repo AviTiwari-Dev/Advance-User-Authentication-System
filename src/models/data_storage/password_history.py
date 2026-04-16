@@ -9,7 +9,7 @@ from sqlalchemy import DateTime, String, func
 from sqlalchemy.dialects.postgresql import UUID as pgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from bases.user_management import UserManagementBase
+from src.bases.user_management import UserManagementBase
 
 
 class PasswordHistory(UserManagementBase):

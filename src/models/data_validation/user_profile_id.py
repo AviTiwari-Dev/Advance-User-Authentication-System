@@ -29,7 +29,7 @@ class UserProfileId(BaseModel):
         # use_enum_values=False,
         validate_default=True,
         validate_assignment=True,
-        revalidate_instances=True,
+        # revalidate_instances=True,
         # json_schema_extra={
         #     "examples"=[
 

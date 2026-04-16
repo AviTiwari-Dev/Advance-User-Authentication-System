@@ -10,8 +10,8 @@ from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, String, func
 from sqlalchemy.dialects.postgresql import UUID as pgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from bases.user_management import UserManagementBase
-from enums.status import StatusEnum
+from src.bases.user_management import UserManagementBase
+from src.enums.status import StatusEnum
 
 
 class EmailAddress(UserManagementBase):

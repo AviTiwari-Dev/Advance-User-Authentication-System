@@ -7,7 +7,7 @@ from uuid import UUID
 
 from pydantic import ConfigDict, Field
 
-from models.data_validation.user_profile_base import UserProfileBase
+from src.models.data_validation.user_profile_base import UserProfileBase
 
 
 class UserProfileFull(UserProfileBase):
@@ -31,7 +31,7 @@ class UserProfileFull(UserProfileBase):
         # use_enum_values=False,
         validate_default=True,
         validate_assignment=True,
-        revalidate_instances=True,
+        # revalidate_instances=True,
         # json_schema_extra={
         #     "examples"=[
 
