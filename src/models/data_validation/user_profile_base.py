@@ -7,10 +7,10 @@ from typing import Annotated
 
 from pydantic import ConfigDict, Field
 
-from enums.gender import GenderEnum
-from models.data_validation.email_address_base import EmailAddressBase
-from models.data_validation.full_name_base import FullNameBase
-from models.data_validation.login_base import LoginBase
+from src.enums.gender import GenderEnum
+from src.models.data_validation.email_address_base import EmailAddressBase
+from src.models.data_validation.full_name_base import FullNameBase
+from src.models.data_validation.login_base import LoginBase
 
 
 class UserProfileBase(FullNameBase, EmailAddressBase):

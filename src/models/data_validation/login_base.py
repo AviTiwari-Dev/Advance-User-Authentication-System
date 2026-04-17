@@ -6,7 +6,7 @@ from typing import Annotated
 
 from pydantic import BaseModel, Field
 
-from models.data_validation.password_base import PasswordBase
+from src.models.data_validation.password_base import PasswordBase
 
 
 class LoginBase(PasswordBase):

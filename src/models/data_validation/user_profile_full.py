@@ -4,8 +4,8 @@
 
 from pydantic import ConfigDict
 
-from models.data_validation.user_profile_id import UserProfileId
 from src.models.data_validation.user_profile_base import UserProfileBase
+from src.models.data_validation.user_profile_id import UserProfileId
 
 
 class UserProfileFull(UserProfileBase, UserProfileId):
