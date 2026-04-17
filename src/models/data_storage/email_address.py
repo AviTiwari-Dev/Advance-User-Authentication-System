@@ -24,7 +24,7 @@ class EmailAddress(UserManagementBase):
 
     user_id: Mapped[UUID] = mapped_column(
         pgUUID(as_uuid=True),
-        ForeignKey("user_profile.users.user_profile_id"),
+        ForeignKey("user_profile.users.user_id"),
         nullable=False
     )
 
