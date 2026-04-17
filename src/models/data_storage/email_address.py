@@ -22,7 +22,7 @@ class EmailAddress(UserManagementBase):
         pgUUID(as_uuid=True), primary_key=True, default=uuid7
     )
 
-    user_profile_id: Mapped[UUID] = mapped_column(
+    user_id: Mapped[UUID] = mapped_column(
         pgUUID(as_uuid=True),
         ForeignKey("user_profile.users.user_profile_id"),
         nullable=False
@@ -53,6 +53,6 @@ class EmailAddress(UserManagementBase):
         default=StatusEnum.active
     )
 
-    user_profile: Mapped["UserProfile"] = relationship(
+    user: Mapped["User"] = relationship(
         back_populates="email_addresses"
     )

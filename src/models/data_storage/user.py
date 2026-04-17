@@ -60,6 +60,6 @@ class User(UserManagementBase):
     )
 
     email_addresses: Mapped[List["EmailAddress"]] = relationship(
-        back_populates="user_profile",
+        back_populates="user",
         cascade="all, delete-orphan"
     )
