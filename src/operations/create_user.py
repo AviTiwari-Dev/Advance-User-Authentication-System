@@ -6,10 +6,10 @@
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models.data_storage.credential import Credential
+from src.models.data_storage.credential import Credential
 from src.models.data_storage.user import User
-from utilities.password_hash import hash_password
-from utilities.username import generate_username
+from src.utilities.password_hash import hash_password
+from src.utilities.username import generate_username
 
 
 async def create_user(user, db_session: AsyncSession):
