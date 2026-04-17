@@ -10,7 +10,6 @@ from pydantic import ConfigDict, Field
 from src.enums.gender import GenderEnum
 from src.models.data_validation.email_address_base import EmailAddressBase
 from src.models.data_validation.full_name_base import FullNameBase
-from src.models.data_validation.login_base import LoginBase
 
 
 class UserProfileBase(FullNameBase, EmailAddressBase):
@@ -23,7 +22,7 @@ class UserProfileBase(FullNameBase, EmailAddressBase):
             title="Date of Birth",
             description="Date of birth",
             deprecated=False,
-            strict=True,
+            strict=False,
         )
     ]
     gender: Annotated[
@@ -32,7 +31,7 @@ class UserProfileBase(FullNameBase, EmailAddressBase):
             title="Gender",
             description="Gender",
             deprecated=False,
-            strict=True,
+            strict=False,
         )
     ]
     model_config = ConfigDict(

@@ -8,15 +8,15 @@ from uuid import UUID
 from pydantic import BaseModel, ConfigDict, Field
 
 
-class UserProfileId(BaseModel):
+class UserId(BaseModel):
     """
     
     """
-    user_profile_id: Annotated[
+    user_id: Annotated[
         UUID,
         Field(
-            title="User Profile ID",
-            description="User profile id along with other feilds of user profile",
+            title="User ID",
+            description="User id along with other feilds of user profile",
             deprecated=False,
             strict=True,
         )

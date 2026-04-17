@@ -5,10 +5,10 @@
 from pydantic import ConfigDict
 
 from src.models.data_validation.user_profile_base import UserProfileBase
-from src.models.data_validation.user_profile_id import UserProfileId
+from src.models.data_validation.user_profile_id import UserId
 
 
-class UserProfileFull(UserProfileBase, UserProfileId):
+class UserProfileFull(UserProfileBase, UserId):
     """
     
     """
