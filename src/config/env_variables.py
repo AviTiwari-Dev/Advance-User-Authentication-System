@@ -22,6 +22,13 @@ class Settings(BaseSettings):
     USER_MANAGEMENT_ENGINE_POOL_RECYCLE: int = 1800
     USER_MANAGEMENT_ENGINE_FUTURE: bool = True
 
+    # Username configuration
+    USERNAME_MAX_LENGTH: int = 32
+
+    # Password configuration
+    PASSWORD_PEPPER: str
+
+
     model_config = ConfigDict(
         env_file=".env",
     )
