@@ -11,30 +11,13 @@ from enums.gender import GenderEnum
 from models.data_validation.email_address_base import EmailAddressBase
 from models.data_validation.full_name_base import FullNameBase
 from models.data_validation.login_base import LoginBase
+from models.data_validation.user_profile_base import UserProfileBase
 
 
-class UserProfileBase(FullNameBase, EmailAddressBase):
+class SignupBase(UserProfileBase, LoginBase):
     """
     
     """
-    date_of_birth: Annotated[
-        date,
-        Field(
-            title="Date of Birth",
-            description="Date of birth",
-            deprecated=False,
-            strict=True,
-        )
-    ]
-    gender: Annotated[
-        GenderEnum,
-        Field(
-            title="Gender",
-            description="Gender",
-            deprecated=False,
-            strict=True,
-        )
-    ]
     model_config = ConfigDict(
         extra="forbid",
         # json_schema_extra={

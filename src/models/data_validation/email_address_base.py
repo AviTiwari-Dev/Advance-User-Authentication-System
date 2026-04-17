@@ -2,17 +2,24 @@
 
 """
 
-from pydantic import ConfigDict
+from typing import Annotated
 
-from models.data_validation.user_profile_id import UserProfileId
-from src.models.data_validation.user_profile_base import UserProfileBase
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
-class UserProfileFull(UserProfileBase, UserProfileId):
+class EmailAddressBase(BaseModel):
     """
     
     """
-    
+    email_address: Annotated[
+        EmailStr,
+        Field(
+            title="Email",
+            description="Email",
+            deprecated=False,
+            strict=True,
+        )
+    ]
     model_config = ConfigDict(
         str_to_lower=True,
         extra="forbid",
