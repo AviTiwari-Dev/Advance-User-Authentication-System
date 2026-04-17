@@ -14,4 +14,5 @@ user_management_engine = create_async_engine(
     pool_timeout=environment_variables.USER_MANAGEMENT_ENGINE_POOL_TIMEOUT,
     pool_recycle=environment_variables.USER_MANAGEMENT_ENGINE_POOL_RECYCLE,
     future=environment_variables.USER_MANAGEMENT_ENGINE_FUTURE,
+    connect_args={"server_settings": {"jit": "off"}},
 )
