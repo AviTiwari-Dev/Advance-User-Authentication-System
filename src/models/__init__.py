@@ -13,4 +13,4 @@ from .data_validation.password_base import PasswordBase
 from .data_validation.signup_base import SignupBase
 from .data_validation.user_profile_base import UserProfileBase
 from .data_validation.user_profile_full import UserProfileFull
-from .data_validation.user_profile_id import UserProfileId
+from .data_validation.user_profile_id import UserId
