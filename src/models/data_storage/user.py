@@ -6,7 +6,7 @@ from datetime import date, datetime
 from typing import List, Optional
 from uuid import UUID, uuid7
 
-from sqlalchemy import Date, DateTime, Enum, ForeignKey, String, func
+from sqlalchemy import Date, DateTime, Enum, String, func
 from sqlalchemy.dialects.postgresql import UUID as pgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -15,12 +15,14 @@ from src.enums.gender import GenderEnum
 from src.enums.status import StatusEnum
 
 
-class UserProfile(UserManagementBase):
+class User(UserManagementBase):
     __tablename__ = "users"
     __table_args__ = {"schema": "user_profile"}
 
-    user_profile_id: Mapped[UUID] = mapped_column(
-        pgUUID(as_uuid=True), primary_key=True, default=uuid7
+    user_id: Mapped[UUID] = mapped_column(
+        pgUUID(as_uuid=True),
+        primary_key=True,
+        default=uuid7
     )
 
     username: Mapped[str] = mapped_column(String(32), unique=True, index=True)
@@ -31,6 +33,12 @@ class UserProfile(UserManagementBase):
 
     date_of_birth: Mapped[date] = mapped_column(Date)
     gender: Mapped[GenderEnum] = mapped_column(Enum(GenderEnum))
+
+    username_update_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        onupdate=func.now()
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
