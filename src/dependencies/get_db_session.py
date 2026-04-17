@@ -13,5 +13,5 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
     """
     
     """
-    async with user_management_session as session:
+    async with user_management_session() as session:
         yield session
