@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.models.data_storage.credential import Credential
 from src.models.data_storage.user import User
-from src.utilities.password_hash import hash_password
+from src.utilities.password_hash import hash_string
 from src.utilities.username import generate_username
 
 
@@ -48,7 +48,7 @@ async def create_user(user, db_session: AsyncSession):
                 # Create credentials
                 credential_data = Credential(
                     user_id=user_id,
-                    hashed_password=hash_password(user["password"]),
+                    hashed_password=hash_string(user["password"]),
                 )
                 db_session.add(credential_data)
 

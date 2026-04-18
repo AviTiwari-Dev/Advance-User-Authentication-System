@@ -17,15 +17,15 @@ ph = PasswordHasher(
 PEPPER = environment_variables.PASSWORD_PEPPER
 
 
-def hash_password(password: str) -> str:
+def hash_string(string: str) -> str:
     """
     Hash password using Argon2 + pepper
     """
-    password_peppered = password + PEPPER
+    password_peppered = string + PEPPER
     return ph.hash(password_peppered)
 
 
-def verify_password(password: str, hashed_password: str) -> bool:
+def verify_hash(password: str, hashed_password: str) -> bool:
     """
     Verify password safely
     """
