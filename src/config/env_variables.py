@@ -27,7 +27,14 @@ class Settings(BaseSettings):
 
     # Password configuration
     PASSWORD_PEPPER: str
+    
+    # Exponential retries configurations
+    MAX_RETRIES: int = 3
+    BASE_DELAY: float = 0.1
 
+    # Token configurations
+    SECRET_KEY: str
+    ALGORITHM: str = "HS256"
 
     model_config = ConfigDict(
         env_file=".env",
