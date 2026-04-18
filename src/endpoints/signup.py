@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.dependencies.get_db_session import get_db_session
 from src.models.data_validation.signup_base import SignupBase
-from src.models.data_validation.user_profile_id import UserId
+from src.models.data_validation.user_id import UserId
 from src.operations.create_user import create_user
 from src.routers.user_profile import user_profile_router
 

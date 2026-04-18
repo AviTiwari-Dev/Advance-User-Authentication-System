@@ -11,6 +11,6 @@ from .data_validation.full_name_base import FullNameBase
 from .data_validation.login_base import LoginBase
 from .data_validation.password_base import PasswordBase
 from .data_validation.signup_base import SignupBase
-from .data_validation.user_profile_base import UserProfileBase
-from .data_validation.user_profile_full import UserProfileFull
-from .data_validation.user_profile_id import UserId
+from .data_validation.user_base import UserBase
+from .data_validation.user_full import UserProfileFull
+from .data_validation.user_id import UserId

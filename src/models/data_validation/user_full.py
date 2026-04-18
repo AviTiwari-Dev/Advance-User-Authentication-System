@@ -4,11 +4,11 @@
 
 from pydantic import ConfigDict
 
-from src.models.data_validation.user_profile_base import UserProfileBase
-from src.models.data_validation.user_profile_id import UserId
+from src.models.data_validation.user_base import UserBase
+from src.models.data_validation.user_id import UserId
 
 
-class UserProfileFull(UserProfileBase, UserId):
+class UserProfileFull(UserBase, UserId):
     """
     
     """

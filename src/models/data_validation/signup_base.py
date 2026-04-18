@@ -5,10 +5,10 @@
 from pydantic import ConfigDict
 
 from src.models.data_validation.password_base import PasswordBase
-from src.models.data_validation.user_profile_base import UserProfileBase
+from models.data_validation.user_base import UserBase
 
 
-class SignupBase(UserProfileBase, PasswordBase):
+class SignupBase(UserBase, PasswordBase):
     """
     
     """
