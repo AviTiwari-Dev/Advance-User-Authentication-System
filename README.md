@@ -241,6 +241,135 @@ uvicorn src.main:api --reload
 
 The app will create database tables on startup using SQLAlchemy metadata.
 
+## Containerization With Docker and Docker Compose
+
+This repository should currently be containerized as one backend service plus its infrastructure.
+
+Even though `src/` contains many folders, they are internal modules of a single FastAPI application, not separate deployable microservices. In other words:
+
+- `src/endpoints`, `src/models`, `src/operations`, and `src/utilities` are layers inside one service
+- the actual deployable service boundary is the FastAPI app in `src/main.py`
+- PostgreSQL runs as a separate infrastructure container
+
+### Current Compose Topology
+
+The container setup now uses two Compose files:
+
+- `docker-compose.yml` for the base runtime stack
+- `docker-compose.dev.yml` for local development overrides
+
+The stack runs:
+
+- `api`: the FastAPI API container
+- `postgres`: the PostgreSQL database container
+
+### Build and Start
+
+For the standard runtime stack:
+
+```bash
+docker compose up --build
+```
+
+For local development with live reload and local PostgreSQL port exposure:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+The API will be available at:
+
+- `http://localhost:8000`
+- Swagger UI: `http://localhost:8000/documentation/Swagger`
+
+### Stop the Stack
+
+```bash
+docker compose down
+```
+
+To remove the database volume as well:
+
+```bash
+docker compose down -v
+```
+
+### How the Container Setup Works
+
+- `Dockerfile` builds a lightweight Python image for the FastAPI service
+- the API container runs as a non-root user
+- `docker-compose.yml` wires the API container to PostgreSQL over the Compose network
+- Compose injects a container-safe database URL using the hostname `postgres`
+- PostgreSQL uses a named volume so local data survives container restarts
+- PostgreSQL runs SQL files from `docker/postgres/init/` on first initialization
+- the base Compose file keeps PostgreSQL private to the Compose network
+- the development override exposes PostgreSQL and enables `uvicorn --reload`
+- the API health check uses the OpenAPI route so it works without extra app code
+
+### Environment Variables for Containers
+
+When running through Docker Compose, this value is overridden automatically:
+
+```env
+USER_MANAGEMENT_ENGINE_DATABASE_URL=postgresql+asyncpg://postgres:postgres@postgres:5432/user_management
+```
+
+Use `.env.example` as the starting point for your local `.env` file.
+
+Your `.env` file should still provide the other required values such as:
+
+- `PASSWORD_PEPPER`
+- `SECRET_KEY`
+- `ALGORITHM`
+- retry and debug settings
+
+### Recommended Commands
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Start the standard stack:
+
+```bash
+docker compose up --build
+```
+
+Start the development stack:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+If you need PostgreSQL to rerun the schema initialization scripts, remove the data volume first:
+
+```bash
+docker compose down -v
+```
+
+## If You Want True Microservices
+
+This codebase is not yet split into independently deployable services. If you want a real microservice architecture, split by business boundary, not by source folder.
+
+A sensible future split would be:
+
+- `auth-service`: login, logout, refresh, password management, token issuance
+- `user-profile-service`: signup, profile lookup, username updates
+- `notification-service`: email verification and background email jobs
+- `api-gateway`: edge routing, TLS termination, rate limiting, and auth forwarding
+
+Each of those services would need:
+
+- its own FastAPI entrypoint
+- its own Dockerfile
+- its own bounded database tables or database schema ownership
+- inter-service communication rules
+- independent deployment and scaling
+
+That is the point where Docker Compose becomes a true multi-service development stack rather than a single-service container setup.
+
 ## Security Notes
 
 - Passwords are hashed with Argon2 and combined with a pepper before storage

@@ -45,4 +45,10 @@ api = FastAPI(
     },
 )
 
+
+@api.get("/health", include_in_schema=False)
+async def healthcheck():
+    return {"status": "ok"}
+
+
 api.include_router(user_profile_router)
