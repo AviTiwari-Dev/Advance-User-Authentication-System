@@ -27,7 +27,7 @@
             "--ssl-keyfile=key.pem",
             "--ssl-certfile=cert.pem",
         ],
-        // "cwd": "${workspaceFolder}/user_management",
+        // "cwd": "${workspaceFolder}",
         "jinja": true,
         "justMyCode": true,
         "presentation": {
