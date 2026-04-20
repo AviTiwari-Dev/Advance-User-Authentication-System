@@ -141,6 +141,8 @@ This structure is useful for maintaining clear domain boundaries and preparing t
 
 ### Available Endpoints
 
+![Swagger UI Preview](docs/swagger_ui.png)
+
 | Method | Path | Purpose |
 | --- | --- | --- |
 | POST | `/user-profile/signup` | Register a new user |
