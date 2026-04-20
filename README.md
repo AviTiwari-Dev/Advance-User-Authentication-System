@@ -216,7 +216,7 @@ Create a `.env` file in the project root and set the required values:
 
 ```env
 DEBUG=True
-USER_MANAGEMENT_ENGINE_DATABASE_URL=postgresql+asyncpg://postgres:password123@localhost:5432/user_management
+USER_MANAGEMENT_ENGINE_DATABASE_URL=postgresql+asyncpg://postgres:password@localhost:5432/user_management
 USER_MANAGEMENT_ENGINE_ECHO=False
 USER_MANAGEMENT_ENGINE_POOL_SIZE=5
 USER_MANAGEMENT_ENGINE_MAX_OVERFLOW=10

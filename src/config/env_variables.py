@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     DEBUG: bool = True
 
     # User management engine configurations
-    USER_MANAGEMENT_ENGINE_DATABASE_URL: str = "postgresql+asyncpg://postgres:password123@localhost:5432/user_management"
+    USER_MANAGEMENT_ENGINE_DATABASE_URL: str
     USER_MANAGEMENT_ENGINE_ECHO: bool = False
     USER_MANAGEMENT_ENGINE_POOL_SIZE: int = 5
     USER_MANAGEMENT_ENGINE_MAX_OVERFLOW: int = 10
